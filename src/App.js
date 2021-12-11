@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {Route} from 'react-router-dom'
+import Layout from "./components/Layout";
+import Fines from "./components/Fines";
+import { Fragment, useState} from "react";
+import Error from './components/Error';
 
-function App() {
+
+const  App=()=> {
+
+  const [fines, setFines] = useState({});
+  const addHandler = (f) => {
+    setFines(f);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Fragment>
+    <Route path='/'>
+      <Layout addHandler={addHandler}>
+      </Layout>
+      </Route>
+       <Route path='/fines/:q'>
+        <Fines fines={fines} />
+      </Route> 
+      <Error fines={fines}/>
+      </Fragment>
   );
 }
 
