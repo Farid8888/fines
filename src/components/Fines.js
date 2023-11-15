@@ -1,7 +1,7 @@
 import classes from './Fines.module.css'
 import  { FinesContext } from '../context/context'
 import {Fragment, useContext} from 'react'
-import LoadingSpinner from './LoadingSpinner'
+
 
 const Fines =(props)=>{
     const loading = useContext(FinesContext).loading
